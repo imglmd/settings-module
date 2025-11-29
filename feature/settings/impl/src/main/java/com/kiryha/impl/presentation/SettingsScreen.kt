@@ -41,6 +41,7 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun SettingsScreen(
     onNavigateBack: () -> Unit,
+    content: @Composable () -> Unit = {}
 ) {
     val viewModel: SettingsViewModel = koinViewModel()
     val settings by viewModel.userSettings.collectAsState()
@@ -68,6 +69,10 @@ fun SettingsScreen(
                 .padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(24.dp)
         ) {
+
+            content()
+
+
             SettingsSection(title = "Тема") {
                 ThemeSelection(
                     selectedTheme = settings.themeMode,
@@ -91,7 +96,7 @@ fun SettingsScreen(
 }
 
 @Composable
-private fun SettingsSection(
+fun SettingsSection(
     title: String,
     content: @Composable () -> Unit
 ) {
@@ -144,7 +149,7 @@ private fun LanguageSelection(
 }
 
 @Composable
-private fun RadioButtonItem(
+fun RadioButtonItem(
     text: String,
     selected: Boolean,
     onClick: () -> Unit
