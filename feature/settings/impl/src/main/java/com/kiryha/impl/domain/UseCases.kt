@@ -47,3 +47,11 @@ internal class UpdateDynamicColorUseCase(
         repository.setDynamicColorEnabled(enabled)
     }
 }
+
+internal class ResetToDefaultsUseCase(
+    private val repository: SettingsRepository
+){
+    suspend operator fun invoke(){
+        repository.resetToDefaults()
+    }
+}

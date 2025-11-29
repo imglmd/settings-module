@@ -4,6 +4,7 @@ import com.kiryha.api.SettingsRepository
 import com.kiryha.impl.data.SettingsDataStore
 import com.kiryha.impl.data.SettingsRepositoryImpl
 import com.kiryha.impl.domain.ObserveUserSettingsUseCase
+import com.kiryha.impl.domain.ResetToDefaultsUseCase
 import com.kiryha.impl.domain.UpdateDynamicColorUseCase
 import com.kiryha.impl.domain.UpdateLanguageUseCase
 import com.kiryha.impl.domain.UpdateThemeModeUseCase
@@ -24,6 +25,7 @@ val settingsModule = module {
     factory { UpdateThemeModeUseCase(get()) }
     factory { UpdateLanguageUseCase(get()) }
     factory { UpdateDynamicColorUseCase(get()) }
+    factory { ResetToDefaultsUseCase(get()) }
 
     viewModel {
         SettingsViewModel(
@@ -31,6 +33,7 @@ val settingsModule = module {
             updateThemeMode = get(),
             updateLanguage = get(),
             updateDynamicColor = get(),
+            resetToDefaults = get()
         )
     }
 }
